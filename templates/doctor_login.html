@@ -7,102 +7,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   <link href="{% static 'css/style7.css' %}" rel="stylesheet">
-  <title>Document</title>
-</head>
-<style>
-        
-  body{
-      
-    background: url('/static/images/doc1.jpg')no-repeat ;
-    background-size: 100%;
-  
-  }
-  .container{
-      /* background-color: #fff; */
-      margin-right:57%;
-      width: 35%;
-      margin-top: 40vh;
-      margin-bottom: 50px;
-      border:0px solid #fff; padding:80px 70px;
-      {% comment %} -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-  -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-  box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75); {% endcomment %}
-  
-  
-  }
-  *{
-      color:body;
-  }
-  h1{
+  <title>Doctor Login</title>
+  <style>
+    body {
+      background: url('{% static "images/doc1.jpg" %}') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 40px 70px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-top: 10vh;
+      margin-bottom: 10vh;
+    }
+
+    h1 {
       text-align: center;
-  }
-  .hh{
-      margin-right: 70%;
-  }
-      </style>
+      color: #333;
+      font-size: 2rem;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    .form-check-label {
+      font-size: 0.9rem;
+    }
+
+    .d-grid {
+      margin-top: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #8ebf42;
+      font-weight: bold;
+      text-align: center;
+      display: block;
+      margin-top: 15px;
+    }
+
+    a:hover {
+      color: #6f9d2d;
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        padding: 30px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+        margin-top: 20vh;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .form-label,
+      .form-control {
+        font-size: 1rem;
+      }
+
+      .btn-success {
+        font-size: 1rem;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
 <body>
-    {% if messages %}{% for message in messages %}<script>alert("{{ message }}");</script>{% endfor %}{% endif %}
-  <div class="row">
-    
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-  <div class="container" >
-    
-  <form method="POST">
-    {% csrf_token %}
-      <h1> Doctor Login </h1>
-      
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="Username" name="dname" ria-describedby="username">
-  
+  {% if messages %}
+    {% for message in messages %}
+      <script>alert("{{ message }}");</script>
+    {% endfor %}
+  {% endif %}
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="container">
+        <form method="POST">
+          {% csrf_token %}
+          <h1>Doctor Login</h1>
+
+          <div class="mb-3">
+            <label for="Username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="Username" name="dname" aria-describedby="username">
+          </div>
+
+          <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="Password" name="pass1" aria-describedby="password">
+          </div>
+
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button class="btn btn-success" type="submit">Login</button>
+          </div>
+
+          <a href="{% url 'doctor_registration' %}" class="btn-btn-success">Register here</a>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="pass1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="pass1">
-      </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <div class="d-grid gap-2">
-        <button class="btn btn-success" type="submit">login</button>
-      </div>
-      <a href="{% url 'doctor_registration' %}" class="btn-btn-success" style="color: #8ebf42">register here</a>
-    </form>
+    </div>
   </div>
-</div>
-</div>  
+
   <script src="{% static 'js/jquery.js' %}"></script>
   <script src="{% static 'js/popper.js' %}"></script>
   <script src="{% static 'js/bootstrap.js' %}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <!-- <script>
-    {% for message in messages %}
-  swal("   {{message}}");
-  
-  {% endfor %}
-</script> -->
- 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
