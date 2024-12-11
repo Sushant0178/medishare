@@ -12,7 +12,7 @@ DEBUG = True
 
 # Allowed hosts
 # ALLOWED_HOSTS = ['*']  # Use specific hosts or domains in production
-ALLOWED_HOSTS = [' .vercel.app', '.now.sh', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 # Installed apps
 INSTALLED_APPS = [
     'home.apps.HomeConfig',  # Custom app
@@ -61,12 +61,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ngo.wsgi.application'
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # Uncomment and configure for PostgreSQL or other databases in production
 # DATABASES = {
 #     'default': {
@@ -105,13 +105,9 @@ DATE_FORMAT = 'Y-m-d'
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
-# Directory to store collected static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Additional directories to search for static files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+MEDIA_URLS ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
