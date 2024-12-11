@@ -37,6 +37,7 @@ MIDDLEWARE = [
 
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Root URL configuration
 ROOT_URLCONF = 'ngo.urls'
 
