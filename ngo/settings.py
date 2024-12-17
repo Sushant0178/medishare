@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'u_ef61bu5c8_%pmh5j@a)*8u4yil4vgu8z=cyn%+mb#5#6zdq0'
 
 # Debug mode (set to False in production)
-DEBUG = True
+DEBUG = False
 
 # Allowed hosts
 # ALLOWED_HOSTS = ['*']  # Use specific hosts or domains in production
